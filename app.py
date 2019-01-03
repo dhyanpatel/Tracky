@@ -24,7 +24,7 @@ def create_uuid():
 
 @app.route('/tracky/<uuid(strict=False):hashcode>/counter/')
 def counter(hashcode):
-    return repr(hashcode)
+    return repr(request.remote_addr)
 
 
 @app.route('/tracky/<uuid(strict=False):hashcode>/statistics/')
