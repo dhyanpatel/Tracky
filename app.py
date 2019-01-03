@@ -19,7 +19,7 @@ def create_uuid():
         f.seek(0)
         json.dump(data, f, indent=4)
         f.truncate()
-        return redirect(url_for('statistics', hashcode=uuid.uuid4()))
+        return redirect(url_for('statistics', hashcode=hashcode))
 
 
 @app.route('/tracky/<uuid(strict=False):hashcode>/counter/')
@@ -29,7 +29,9 @@ def counter(hashcode):
 
 @app.route('/tracky/<uuid(strict=False):hashcode>/statistics/')
 def statistics(hashcode):
-
+    with open('./static/urls.json', 'r') as f:
+        data = json.load(f)
+        return render_template('statistics.html', hashcode=hashcode, count=data[str(hashcode)])
 
 
 if __name__ == '__main__':
