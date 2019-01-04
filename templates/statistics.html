@@ -4,8 +4,10 @@
     <meta charset="UTF-8">
     <title>Statistics</title>
 </head>
-<body>
-<h1>{{ hashcode }}</h1>
-<h2>{{ count }}</h2>
+<body style="background-image: url('/../static/images/blue-gradient-background.png')">
+<h1 style="color:white">{{ count }} people have visited your page so far!</h1>
+<br>
+<h2 style="color:white">Share the following link to track your page visits!</h2>
+<a href="http://aethennd.pythonanywhere.com/tracky/{{ hashcode }}/counter/" style="color:white">http://aethennd.pythonanywhere.com/tracky/{{ hashcode }}/counter/</a>
 </body>
 </html>

@@ -24,7 +24,13 @@ def create_uuid():
 
 @app.route('/tracky/<uuid(strict=False):hashcode>/counter/')
 def counter(hashcode):
-    return repr(request.remote_addr)
+    with open('./static/urls.json','r+') as f:
+        data = json.load(f)
+        data[str(hashcode)] += 1
+        f.seek(0)
+        json.dump(data,f,indent=4)
+        f.truncate()
+        return render_template('counter.html')
 
 
 @app.route('/tracky/<uuid(strict=False):hashcode>/statistics/')
